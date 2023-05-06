@@ -1,15 +1,70 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Mi Web con Artyom.js</title>
-  <script src="artyom.window.js"></script>
-</head>
-<body>
-  <h1>Mi Web con Artyom.js</h1>
-  
-  <button onclick="startListening()">Activar reconocimiento de voz</button>
+  <head>
+	
+	<!-- Include Artyom.js library -->
+    <script src="artyom.window.js"></script>
+    <link rel="stylesheet" href="css/w3.css"/>
+	  
+<style>
+ 
+  </style>
+  </head>
+  <body class="w3-blue">
+	<div class="w3-center">
+    <img id="robot" class="w3-responsive w3-center" src="robot.png">
+	</div>
+	
+	<div class="w3-container w3-padding">
+    <div class="w3-card w3-border w3-white" id="response"></div>
 
-  <script src="script.js"></script>
-</body>
+    </div>
+
+<script>
+        var artyom = new Artyom();
+
+        // Define the "How are you?" command
+        artyom.addCommands({
+            indexes: ["rabbit"],
+            action: () => {
+                
+                   document.getElementById("response").innerHTML ='<img src="img/rabbit.png">';
+                   artyom.say("This is a rabbit"); 
+				   }
+        });
+
+        // Define the "Good morning" command
+        artyom.addCommands({
+            indexes: ["dog"],
+            action: () => {
+                artyom.say("Hi.");
+                document.getElementById("response").innerHTML = "Hi.";
+            }
+        });
+		
+		
+		
+		artyom.addCommands({
+    indexes: ["test"],
+    action: () => {
+        artyom.say("Testing, testing, one two three.");
+    }
+});
+
+		
+
+        // Start the Artyom instance with textToSpeech option enabled
+        artyom.initialize({
+            lang: "en-US",
+            continuous: true,
+            soundex: true,
+            listen: true,
+            textToSpeech: true,
+            debug: true
+        });
+</script>
+  </body>
 </html>
+
 
