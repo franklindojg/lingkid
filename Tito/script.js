@@ -4,9 +4,9 @@ const artyom = new Artyom();
 // Definir comandos de voz
 artyom.addCommands([
   {
-    indexes: ["hola", "saludos"],
+    indexes: ["hi", "morning"],
     action: () => {
-      artyom.say("¡Hola! ¿En qué puedo ayudarte?");
+      artyom.say("¡hi! how can i help you?");
     }
   },
   // Agrega más comandos según tus necesidades
@@ -14,7 +14,7 @@ artyom.addCommands([
 
 // Iniciar Artyom
 artyom.initialize({
-  lang: "es-ES", // Establece el idioma
+  lang: "en-US", // Establece el idioma
   continuous: true, // Escucha continua
   soundex: true, // Habilita el algoritmo Soundex
   debug: true // Activa el modo de depuración para ver mensajes en la consola
@@ -24,12 +24,12 @@ function startListening() {
   artyom.fatality(); // Detener cualquier instancia anterior (si existe)
   
   artyom.initialize({
-    lang: "es-ES",
+    lang: "en-US",
     continuous: true,
     soundex: true,
     debug: true
   }).then(() => {
-    artyom.say("¡Hola! Estoy escuchando."); // Responde con un mensaje de voz
+    artyom.say("¡hi!"); // Responde con un mensaje de voz
     artyom.start(); // Iniciar escucha
   });
 }
